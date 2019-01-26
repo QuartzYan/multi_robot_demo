@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="robot_id" default="iqr_112122"/>
+  <arg name="mqtt_server_ip" default="127.0.0.1"/>
+
+  <node pkg="multi_robot_client" type="multi_robot_client.py" name="$(arg robot_id)" output="screen">
+    <param name="robot_id" value="$(arg robot_id)"/>
+    <param name="frame_id" value="map"/>
+    <param name="robotpose_name" value="amcl_pose"/>
+    <param name="goalpose_name" value="move_base_simple/goal"/>
+    <param name="initialpose_name" value="initialpose"/>
+    <param name="mqtt_server_ip" value="$(arg mqtt_server_ip)"/>
+    <param name="mqtt_sub_name" value="goal_pose"/>
+    <param name="mqtt_pub_name" value="robot_pose"/>
+  </node>
+
+</launch>
